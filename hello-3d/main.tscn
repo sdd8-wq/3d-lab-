@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ck8fk2yg20uqm"]
+
+[ext_resource type="Script" uid="uid://j3cg57jfi13h" path="res://player_1.gd" id="1_ig7tw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g6it6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g6it6"]
+
+[node name="main" type="Node3D" unique_id=1575041907]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=754186748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(20, 1, 20)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CSGBox3D" unique_id=2123890071]
+transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1814487017]
+transform = Transform3D(1, 0, 0, 0, 0.49999994, 0.8660254, 0, -0.8660254, 0.49999994, 0, 12, 15)
+current = true
+
+[node name="player 1" type="CharacterBody3D" parent="Camera3D" unique_id=1911538293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+script = ExtResource("1_ig7tw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/player 1" unique_id=902268447]
+mesh = SubResource("CapsuleMesh_g6it6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/player 1" unique_id=365404332]
+shape = SubResource("CapsuleShape3D_g6it6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=946711705]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=740732134]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -258.5
+offset_right = 258.5
+offset_bottom = 55.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Move me with your arrows"
